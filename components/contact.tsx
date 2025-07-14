@@ -49,8 +49,7 @@ export default function Contact() {
             <span className="text-golden block">Your Journey?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get in touch with us today to schedule your free trial class or ask any questions. We're here to help you
-            achieve your boxing and fitness goals.
+           Boxmandu 🥊 the place to be if you want to LEARN,IMPROVE,MASTER.Want to start boxing now?
           </p>
         </div>
 
@@ -68,7 +67,20 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-black mb-1">Location</h4>
                     <p className="text-gray-600">
-                      Thamel, Kathmandu 44600
+                      Bouddha, Kathmandu 44600
+                      <br />
+                      Nepal
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-golden/10 rounded-lg flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-golden" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-black mb-1">Branch Location</h4>
+                    <p className="text-gray-600">
+                      lazimpat, Kathmandu 44600
                       <br />
                       Nepal
                     </p>
@@ -80,11 +92,23 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-golden" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-black mb-1">Phone</h4>
+                    <h4 className="font-semibold text-black mb-1">Phone Main branch</h4>
                     <p className="text-gray-600">
-                      +977-1-4441234
+                      +981-3261944
                       <br />
-                      +977-9841234567
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-golden/10 rounded-lg flex-shrink-0">
+                    <Phone className="w-6 h-6 text-golden" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-black mb-1">Phone Lazimpat branch</h4>
+                    <p className="text-gray-600">
+                      +981-3261944
+                      <br />
                     </p>
                   </div>
                 </div>

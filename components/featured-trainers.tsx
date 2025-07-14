@@ -25,28 +25,7 @@ export default function FeaturedTrainers() {
       students: 200,
       bio: "Rajesh brings over a decade of professional boxing experience to BoxMandu. His passion for the sport and dedication to student success has made him one of Nepal's most respected boxing coaches.",
     },
-    {
-      name: "Sita Gurung",
-      title: "Women's Boxing Specialist",
-      experience: "8 Years Experience",
-      specialties: ["Women's Boxing", "Self-Defense", "Fitness Boxing"],
-      achievements: ["Women's Boxing Champion", "Self-Defense Instructor", "Youth Program Developer"],
-      image: trainer2,
-      rating: 4.8,
-      students: 150,
-      bio: "Sita is a pioneer in women's boxing in Nepal. She empowers women through boxing, teaching not just technique but confidence and self-defense skills.",
-    },
-    {
-      name: "Bikash Tamang",
-      title: "Fitness & Conditioning Coach",
-      experience: "10 Years Experience",
-      specialties: ["HIIT Training", "Strength & Conditioning", "Weight Management"],
-      achievements: ["Certified Fitness Trainer", "Sports Nutrition Specialist", "Injury Prevention Expert"],
-      image: trainer3,
-      rating: 4.9,
-      students: 180,
-      bio: "Bikash combines boxing with fitness science to create comprehensive training programs that deliver real results for athletes of all levels.",
-    },
+    
   ]
 
   return (

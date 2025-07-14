@@ -27,7 +27,7 @@ export default function CallToAction() {
   }, [])
 
   const features = [
-    { icon: Star, text: "7-Day Free Trial" },
+    // { icon: Star, text: "7-Day Free Trial" },
     { icon: Users, text: "Expert Trainers" },
     { icon: Award, text: "Modern Equipment" },
     { icon: Zap, text: "Flexible Schedule" },
@@ -99,7 +99,7 @@ export default function CallToAction() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-6 text-xl group"
+                className="border-2 bg-black border-white text-white hover:bg-white hover:text-black px-12 py-6 text-xl group"
               >
                 View Pricing
                 <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />

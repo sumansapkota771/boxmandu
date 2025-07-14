@@ -20,7 +20,7 @@ export default function FeaturedServices() {
       description: "One-on-one sessions with certified trainers tailored to your specific goals and fitness level.",
       features: ["Customized workout plans", "Technique refinement", "Progress tracking", "Flexible scheduling"],
       image: service1 ,
-      price: "From NPR 1,500/session",
+      price: "From NPR 10,000/month",
       rating: 4.9,
     },
     {
@@ -29,7 +29,7 @@ export default function FeaturedServices() {
       description: "High-energy group sessions that build community, motivation, and lasting friendships.",
       features: ["Beginner to advanced levels", "Small class sizes", "Social atmosphere", "Variety of styles"],
       image: service2,
-      price: "From NPR 2,500/month",
+      price: "From NPR 5,000/month",
       rating: 4.8,
     },
     {
@@ -41,7 +41,7 @@ export default function FeaturedServices() {
       price: "From NPR 3,000/month",
       rating: 4.9,
     },
-    {
+    /*{
       icon: Zap,
       title: "HIIT Boxing",
       description: "High-intensity interval training combined with boxing for maximum calorie burn and fitness.",
@@ -49,7 +49,7 @@ export default function FeaturedServices() {
       image: service4,
       price: "From NPR 3,500/month",
       rating: 4.7,
-    },
+    },*/
   ]
 
   return (
@@ -73,7 +73,7 @@ export default function FeaturedServices() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid  md:grid-cols-2 lg:grid-cols-3  gap-8 mb-12 ">
           {services.map((service, index) => (
             <div
               key={index}

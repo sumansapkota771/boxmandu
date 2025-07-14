@@ -20,15 +20,15 @@ export default function Footer() {
               your inner champion.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-golden transition-colors">
+              <a href="https://www.facebook.com/boxmandu" className="text-gray-400 hover:text-golden transition-colors">
                 <Facebook className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-golden transition-colors">
+              <a href="https://www.instagram.com/boxmandu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="text-gray-400 hover:text-golden transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-golden transition-colors">
+              {/* <a href="#" className="text-gray-400 hover:text-golden transition-colors">
                 <Youtube className="w-6 h-6" />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -108,14 +108,14 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-golden mt-1 flex-shrink-0" />
                 <div className="text-gray-400">
-                  <p>Thamel, Kathmandu 44600</p>
-                  <p>Nepal</p>
+                  <p>Bauddha & Lazimpat </p>
+                  <p>Kathmandu, Nepal</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-golden flex-shrink-0" />
                 <div className="text-gray-400">
-                  <p>+977-1-4441234</p>
+                  <p>+977-981-3261944</p>
                   <p>+977-9841234567</p>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">© {new Date().getFullYear()} BoxMandu. All rights reserved.</div>
-            <div className="flex space-x-6 text-sm">
+            {/* <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-golden transition-colors">
                 Privacy Policy
               </a>
@@ -143,7 +143,7 @@ export default function Footer() {
               <a href="#" className="text-gray-400 hover:text-golden transition-colors">
                 Refund Policy
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

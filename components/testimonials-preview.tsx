@@ -4,6 +4,9 @@ import { useState, useEffect } from "react"
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import priya from "../images/hero1.jpg" // Placeholder image, replace with actual image path
+import arjun from "../images/hero2.jpg" // Placeholder image, replace with actual image path
+import sunita from "../images/hero2.jpg" // Placeholder image, replace with actual image path
 
 export default function TestimonialsPreview() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -13,8 +16,7 @@ export default function TestimonialsPreview() {
     {
       name: "Priya Sharma",
       role: "Software Engineer",
-      image: "/placeholder.svg?height=100&width=100",
-      rating: 5,
+      image: priya,
       text: "BoxMandu completely transformed my fitness journey. The trainers are incredibly knowledgeable and supportive. I've gained confidence, strength, and made amazing friends here.",
       achievement: "Lost 15kg in 6 months",
       location: "Kathmandu",
@@ -22,7 +24,7 @@ export default function TestimonialsPreview() {
     {
       name: "Arjun Thapa",
       role: "Business Owner",
-      image: "/placeholder.svg?height=100&width=100",
+      image: arjun,
       rating: 5,
       text: "As someone who was completely new to boxing, I was nervous at first. But the community at BoxMandu is so welcoming and encouraging. The structured programs helped me progress safely.",
       achievement: "Competed in first amateur bout",
@@ -31,7 +33,7 @@ export default function TestimonialsPreview() {
     {
       name: "Sunita Rai",
       role: "College Student",
-      image: "/placeholder.svg?height=100&width=100",
+      image: sunita,
       rating: 5,
       text: "The women's boxing classes are fantastic! Sita ma'am is an incredible trainer who focuses on both technique and empowerment. I feel stronger and more confident than ever.",
       achievement: "Became women's class leader",

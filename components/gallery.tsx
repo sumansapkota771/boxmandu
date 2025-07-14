@@ -3,56 +3,54 @@
 import { useState } from "react"
 import Image from "next/image"
 import { X } from "lucide-react"
+import image1 from "../images/gallary/gallary 1.jpg"
+import image2 from "../images/gallary/gallary2.jpg"
+import image3 from "../images/gallary/gallary3.jpg"
+import image4 from "../images/gallary/gallary4.png"
+import image5 from "../images/gallary/gallary5.jpg"
+import image6 from "../images/gallary/training1.jpg"
+import image7 from "../images/gallary/training2.jpg"
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   const galleryImages = [
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src: image1,
       alt: "Boxing training session",
       category: "Training",
     },
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src: image2,
       alt: "Modern gym equipment",
       category: "Facilities",
     },
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src: image3,
       alt: "Group boxing class",
       category: "Classes",
     },
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src:image4,
       alt: "Personal training session",
       category: "Training",
     },
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src: image5,
       alt: "Boxing ring and equipment",
       category: "Facilities",
     },
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src: image6,
       alt: "Women's boxing class",
       category: "Classes",
     },
     {
-      src: "/placeholder.svg?height=400&width=600",
+      src: image7,
       alt: "Sparring session",
       category: "Training",
     },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Gym interior view",
-      category: "Facilities",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Youth boxing program",
-      category: "Classes",
-    },
+    
   ]
 
   return (
@@ -98,24 +96,29 @@ export default function Gallery() {
 
         {/* Lightbox Modal */}
         {selectedImage && (
-          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-            <div className="relative max-w-4xl max-h-full">
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute -top-12 right-0 text-white hover:text-golden transition-colors"
-              >
-                <X className="w-8 h-8" />
-              </button>
-              <Image
-                src={selectedImage || "/placeholder.svg"}
-                alt="Gallery image"
-                width={800}
-                height={600}
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
-            </div>
-          </div>
-        )}
+  <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+    <div className="relative max-w-4xl w-full">
+      {/* Close Button */}
+      <button
+        onClick={() => setSelectedImage(null)}
+        className="absolute top-4 right-4 text-white bg-black/50 hover:bg-golden rounded-full p-2 transition-all"
+        aria-label="Close"
+      >
+        <X className="w-6 h-6" />
+      </button>
+
+      {/* Image */}
+      <Image
+        src={selectedImage}
+        alt="Gallery image"
+        width={800}
+        height={600}
+        className="w-full max-h-[80vh] object-contain rounded-lg"
+      />
+    </div>
+  </div>
+)}
+
 
         <div className="text-center mt-12">
           <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
