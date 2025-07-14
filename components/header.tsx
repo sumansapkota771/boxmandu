@@ -29,7 +29,6 @@ export default function Header() {
     { name: "Trainers", href: "/trainers" },
     { name: "Schedule", href: "/schedule" },
     { name: "Gallery", href: "/gallery" },
-    // { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ]
 
