@@ -75,7 +75,7 @@ export default function Gallery() {
             <div
               key={index}
               className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => setSelectedImage(image.src)}
+              onClick={() => setSelectedImage(image.src.src)}
             >
               <Image
                 src={image.src || "/placeholder.svg"}
