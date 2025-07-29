@@ -61,3 +61,20 @@
 html {
   scroll-behavior: smooth;
 }
+
+@layer utilities {
+  .animate-show {
+    animation: showUp 1s ease-out forwards;
+  }
+
+  @keyframes showUp {
+    0% {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

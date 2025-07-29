@@ -16,12 +16,12 @@ export default function FeaturedServices() {
   const services = [
     {
       icon: Dumbbell,
-      title: "Personal Training",
+      title: "Group classes",
       description: "One-on-one sessions with certified trainers tailored to your specific goals and fitness level.",
       features: ["Customized workout plans", "Technique refinement", "Progress tracking", "Flexible scheduling"],
       image: service1 ,
-      price: "From NPR 10,000/month",
-      rating: 4.9,
+      price: "From NPR 5,000 per month",
+      // rating: 4.9,
     },
     {
       icon: Users,
@@ -29,17 +29,17 @@ export default function FeaturedServices() {
       description: "High-energy group sessions that build community, motivation, and lasting friendships.",
       features: ["Beginner to advanced levels", "Small class sizes", "Social atmosphere", "Variety of styles"],
       image: service2,
-      price: "From NPR 5,000/month",
-      rating: 4.8,
+      price: "Rs. 13,500 for 3 months",
+      // rating: 4.8,
     },
     {
       icon: Target,
-      title: "Boxing Fundamentals",
+      title: "Group classes",
       description: "Master the basics with our comprehensive fundamentals program designed for all skill levels.",
       features: ["Proper stance and footwork", "Basic combinations", "Defense techniques", "Safety protocols"],
       image: service3,
-      price: "From NPR 3,000/month",
-      rating: 4.9,
+      price: "Rs. 25,000 for 6 months",
+      // rating: 4.9,
     },
     /*{
       icon: Zap,
@@ -90,10 +90,10 @@ export default function FeaturedServices() {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
+                {/* <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
                   <Star className="w-4 h-4 text-golden fill-current mr-1" />
                   <span className="text-sm font-semibold">{service.rating}</span>
-                </div>
+                </div> */}
               </div>
 
               <div className="p-6 space-y-4">

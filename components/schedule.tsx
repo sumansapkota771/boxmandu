@@ -7,76 +7,60 @@ import { Clock, Users, Award } from "lucide-react"
 export default function Schedule() {
   const [selectedDay, setSelectedDay] = useState("Monday")
 
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"]
 
-  const schedule = {
-    Monday: [
-      {
-        time: "6:00 AM",
-        class: "Morning Boxing Fundamentals",
-        trainer: "Rajesh Maharjan",
-        level: "Beginner",
-        spots: 12,
-      },
-      { time: "7:30 AM", class: "HIIT Boxing", trainer: "Bikash Tamang", level: "All Levels", spots: 15 },
-      { time: "6:00 PM", class: "Women's Boxing", trainer: "Sita Gurung", level: "All Levels", spots: 10 },
-      { time: "7:30 PM", class: "Advanced Boxing", trainer: "Rajesh Maharjan", level: "Advanced", spots: 8 },
-    ],
-    Tuesday: [
-      { time: "6:00 AM", class: "Cardio Boxing", trainer: "Bikash Tamang", level: "All Levels", spots: 15 },
-      { time: "7:30 AM", class: "Boxing Fundamentals", trainer: "Anita Shrestha", level: "Beginner", spots: 12 },
-      { time: "6:00 PM", class: "Sparring Session", trainer: "Rajesh Maharjan", level: "Intermediate", spots: 6 },
-      { time: "7:30 PM", class: "Fitness Boxing", trainer: "Sita Gurung", level: "All Levels", spots: 14 },
-    ],
-    Wednesday: [
-      {
-        time: "6:00 AM",
-        class: "Morning Boxing Fundamentals",
-        trainer: "Rajesh Maharjan",
-        level: "Beginner",
-        spots: 12,
-      },
-      { time: "7:30 AM", class: "HIIT Boxing", trainer: "Bikash Tamang", level: "All Levels", spots: 15 },
-      { time: "6:00 PM", class: "Youth Boxing (Ages 12-17)", trainer: "Anita Shrestha", level: "Youth", spots: 10 },
-      { time: "7:30 PM", class: "Competition Prep", trainer: "Rajesh Maharjan", level: "Advanced", spots: 6 },
-    ],
-    Thursday: [
-      { time: "6:00 AM", class: "Cardio Boxing", trainer: "Bikash Tamang", level: "All Levels", spots: 15 },
-      { time: "7:30 AM", class: "Women's Self Defense", trainer: "Sita Gurung", level: "All Levels", spots: 12 },
-      { time: "6:00 PM", class: "Boxing Fundamentals", trainer: "Anita Shrestha", level: "Beginner", spots: 12 },
-      { time: "7:30 PM", class: "Advanced Techniques", trainer: "Rajesh Maharjan", level: "Advanced", spots: 8 },
-    ],
-    Friday: [
-      {
-        time: "6:00 AM",
-        class: "Morning Boxing Fundamentals",
-        trainer: "Rajesh Maharjan",
-        level: "Beginner",
-        spots: 12,
-      },
-      { time: "7:30 AM", class: "HIIT Boxing", trainer: "Bikash Tamang", level: "All Levels", spots: 15 },
-      { time: "6:00 PM", class: "Open Gym & Sparring", trainer: "All Trainers", level: "All Levels", spots: 20 },
-      {
-        time: "7:30 PM",
-        class: "Friday Fight Night Training",
-        trainer: "Rajesh Maharjan",
-        level: "Intermediate",
-        spots: 10,
-      },
-    ],
-    Saturday: [
-      { time: "8:00 AM", class: "Weekend Warriors", trainer: "Bikash Tamang", level: "All Levels", spots: 18 },
-      { time: "10:00 AM", class: "Family Boxing (Ages 8+)", trainer: "Anita Shrestha", level: "Family", spots: 15 },
-      { time: "2:00 PM", class: "Women's Boxing Workshop", trainer: "Sita Gurung", level: "All Levels", spots: 12 },
-      { time: "4:00 PM", class: "Competition Training", trainer: "Rajesh Maharjan", level: "Advanced", spots: 8 },
-    ],
-    Sunday: [
-      { time: "8:00 AM", class: "Sunday Slow Burn", trainer: "Bikash Tamang", level: "All Levels", spots: 15 },
-      { time: "10:00 AM", class: "Beginner's Workshop", trainer: "Anita Shrestha", level: "Beginner", spots: 14 },
-      { time: "2:00 PM", class: "Open Gym", trainer: "Staff Available", level: "All Levels", spots: 25 },
-      { time: "4:00 PM", class: "Sunday Sparring", trainer: "Rajesh Maharjan", level: "Intermediate", spots: 10 },
-    ],
-  }
+const schedule = {
+  Monday: [
+    { time: "6:00 AM", class: "Boxing" },
+    { time: "7:30 AM", class: "Boxing" },
+    { time: "1:30 PM", class: "Boxing" },
+    { time: "3:00 PM", class: "Boxing" },
+    { time: "5:00 PM", class: "Boxing" },
+    { time: "6:30 PM", class: "Boxing" },
+  ],
+  Tuesday: [
+    { time: "6:00 AM", class: "Boxing" },
+    { time: "7:30 AM", class: "Boxing" },
+    { time: "1:30 PM", class: "Boxing" },
+    { time: "3:00 PM", class: "Boxing" },
+    { time: "5:00 PM", class: "Boxing" },
+    { time: "6:30 PM", class: "Boxing" },
+  ],
+  Wednesday: [
+    { time: "6:00 AM", class: "Boxing" },
+    { time: "7:30 AM", class: "Boxing" },
+    { time: "1:30 PM", class: "Boxing" },
+    { time: "3:00 PM", class: "Boxing" },
+    { time: "5:00 PM", class: "Boxing" },
+    { time: "6:30 PM", class: "Boxing" },
+  ],
+  Thursday: [
+    { time: "6:00 AM", class: "Sparring Session" },
+    { time: "7:30 AM", class: "Sparring Session" },
+    { time: "1:30 PM", class: "Sparring Session" },
+    { time: "3:00 PM", class: "Sparring Session" },
+    { time: "5:00 PM", class: "Sparring Session" },
+    { time: "6:30 PM", class: "Sparring Session" },
+  ],
+  Friday: [
+    { time: "6:00 AM", class: "Cardio" },
+    { time: "7:30 AM", class: "Cardio" },
+    { time: "1:30 PM", class: "Cardio" },
+    { time: "3:00 PM", class: "Cardio" },
+    { time: "5:00 PM", class: "Cardio" },
+    { time: "6:30 PM", class: "Cardio" },
+  ],
+  Sunday: [
+    { time: "6:00 AM", class: "Boxing" },
+    { time: "7:30 AM", class: "Boxing" },
+    { time: "1:30 PM", class: "Boxing" },
+    { time: "3:00 PM", class: "Boxing" },
+    { time: "5:00 PM", class: "Boxing" },
+    { time: "6:30 PM", class: "Boxing" },
+  ],
+};
+
+
 
   const getLevelColor = (level: string) => {
     switch (level) {
@@ -147,21 +131,22 @@ export default function Schedule() {
                       <Clock className="w-5 h-5 mr-2" />
                       {classItem.time}
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getLevelColor(classItem.level)}`}>
+                    {/* <span className={`px-3 py-1 rounded-full text-sm font-medium ${getLevelColor(classItem.level)}`}>
                       {classItem.level}
-                    </span>
+                    </span> */}
                   </div>
 
                   <h3 className="text-xl font-bold text-black">{classItem.class}</h3>
 
                   <div className="flex items-center gap-6 text-gray-600">
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <Award className="w-4 h-4 mr-2" />
                       {classItem.trainer}
-                    </div>
+                    </div> */}
                     <div className="flex items-center">
                       <Users className="w-4 h-4 mr-2" />
-                      {classItem.spots} spots available
+                      {/* {classItem.spots}  */}
+                      spots available
                     </div>
                   </div>
                 </div>
@@ -173,9 +158,9 @@ export default function Schedule() {
                   >
                     Book Class
                   </Button>
-                  <Button variant="outline" className="border-golden text-golden hover:bg-golden hover:text-white px-6">
+                  {/* <Button variant="outline" className="border-golden text-golden hover:bg-golden hover:text-white px-6">
                     Learn More
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>
@@ -201,7 +186,7 @@ export default function Schedule() {
                   <li>• Comfortable workout clothes</li>
                   <li>• Water bottle and towel</li>
                   <li>• Hand wraps (available for purchase)</li>
-                  <li>• Boxing gloves (rental available)</li>
+                  <li>• Boxing gloves (available for purchase)</li>
                 </ul>
               </div>
             </div>

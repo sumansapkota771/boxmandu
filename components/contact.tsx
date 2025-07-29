@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,30 +14,74 @@ export default function Contact() {
     phone: "",
     message: "",
     interest: "general",
-  })
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    alert(`Thank you ${formData.name}! We'll get back to you within 24 hours.`)
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-      interest: "general",
-    })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!recaptchaToken) {
+      setSubmitError("Please complete the reCAPTCHA verification");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      setSubmitSuccess(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        interest: "general",
+      });
+    } catch (error) {
+      console.error("Submit error:", error);
+      setSubmitError(
+        error instanceof Error ? error.message : "Something went wrong"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50" id="contact">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-golden/10 rounded-full">
@@ -49,15 +92,18 @@ export default function Contact() {
             <span className="text-golden block">Your Journey?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-           Boxmandu 🥊 the place to be if you want to LEARN,IMPROVE,MASTER.Want to start boxing now?
+            Boxmandu 🥊 the place to be if you want to LEARN, IMPROVE, MASTER. Want
+            to start boxing now?
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
+          {/* Contact Information - Enhanced with click-to-call/email */}
           <div className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-black mb-6">Get In Touch</h3>
+              <h3 className="text-2xl font-bold text-black mb-6">
+                Get In Touch
+              </h3>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -71,19 +117,38 @@ export default function Contact() {
                       <br />
                       Nepal
                     </p>
+                    <a 
+                      href="https://maps.google.com/?q=Boxmandu+Bouddha+Kathmandu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-golden hover:underline text-sm mt-1 inline-block"
+                    >
+                      View on Google Maps
+                    </a>
                   </div>
                 </div>
+
                 <div className="flex items-start space-x-4">
                   <div className="flex items-center justify-center w-12 h-12 bg-golden/10 rounded-lg flex-shrink-0">
                     <MapPin className="w-6 h-6 text-golden" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-black mb-1">Branch Location</h4>
+                    <h4 className="font-semibold text-black mb-1">
+                      Branch Location
+                    </h4>
                     <p className="text-gray-600">
-                      lazimpat, Kathmandu 44600
+                      Lazimpat, Kathmandu 44600
                       <br />
                       Nepal
                     </p>
+                    <a 
+                      href="https://maps.google.com/?q=Boxmandu+Lazimpat+Kathmandu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-golden hover:underline text-sm mt-1 inline-block"
+                    >
+                      View on Google Maps
+                    </a>
                   </div>
                 </div>
 
@@ -92,11 +157,15 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-golden" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-black mb-1">Phone Main branch</h4>
-                    <p className="text-gray-600">
+                    <h4 className="font-semibold text-black mb-1">
+                      Phone Main branch
+                    </h4>
+                    <a 
+                      href="tel:+9813261944" 
+                      className="text-gray-600 hover:text-golden transition-colors"
+                    >
                       +981-3261944
-                      <br />
-                    </p>
+                    </a>
                   </div>
                 </div>
 
@@ -105,11 +174,15 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-golden" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-black mb-1">Phone Lazimpat branch</h4>
-                    <p className="text-gray-600">
+                    <h4 className="font-semibold text-black mb-1">
+                      Phone Lazimpat branch
+                    </h4>
+                    <a 
+                      href="tel:+9813261944" 
+                      className="text-gray-600 hover:text-golden transition-colors"
+                    >
                       +981-3261944
-                      <br />
-                    </p>
+                    </a>
                   </div>
                 </div>
 
@@ -119,11 +192,12 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-black mb-1">Email</h4>
-                    <p className="text-gray-600">
-                      info@boxmandu.com
-                      <br />
-                      training@boxmandu.com
-                    </p>
+                    <a 
+                      href="mailto:boxmanduboxinggym2080@gmail.com" 
+                      className="text-gray-600 hover:text-golden transition-colors break-all"
+                    >
+                      boxmanduboxinggym2080@gmail.com
+                    </a>
                   </div>
                 </div>
 
@@ -134,36 +208,77 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-black mb-1">Hours</h4>
                     <p className="text-gray-600">
-                      Mon - Fri: 6:00 AM - 9:00 PM
+                      Sun - Fri: 6:00 AM - 8:00 PM
                       <br />
-                      Sat - Sun: 8:00 AM - 6:00 PM
+                      Sat: Closed
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Enhanced Map Section */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-black mb-6">Find Us</h3>
-              <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <MapPin className="w-12 h-12 mx-auto mb-2" />
-                  <p>Interactive Map</p>
-                  <p className="text-sm">Thamel, Kathmandu</p>
-                </div>
+              <div className="rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.933248319139!2d85.355046!3d27.719347199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190ba120169f%3A0x1abd266d71082dbc!2sBoxmandu!5e0!3m2!1sen!2snp!4v1753089255166!5m2!1sen!2snp"
+                  width="100%"
+                  height="256"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-64"
+                  title="Boxmandu Location"
+                ></iframe>
+              </div>
+              <div className="mt-4 flex justify-between">
+                <a
+                  href="https://maps.google.com/?q=Boxmandu+Bouddha+Kathmandu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-golden hover:underline text-sm"
+                >
+                  Get Directions to Bouddha
+                </a>
+                <a
+                  href="https://maps.google.com/?q=Boxmandu+Lazimpat+Kathmandu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-golden hover:underline text-sm"
+                >
+                  Get Directions to Lazimpat
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Enhanced Contact Form */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-black mb-6">Send Us a Message</h3>
+            <h3 className="text-2xl font-bold text-black mb-6">
+              Send Us a Message
+            </h3>
+
+            {submitSuccess && (
+              <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-lg">
+                Thank you for your message! We'll get back to you soon.
+              </div>
+            )}
+
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg">
+                {submitError}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-black mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-black mb-2"
+                  >
                     Full Name *
                   </label>
                   <Input
@@ -175,10 +290,14 @@ export default function Contact() {
                     required
                     className="w-full"
                     placeholder="Your full name"
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-black mb-2"
+                  >
                     Email Address *
                   </label>
                   <Input
@@ -190,12 +309,16 @@ export default function Contact() {
                     required
                     className="w-full"
                     placeholder="your.email@example.com"
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-black mb-2">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-black mb-2"
+                >
                   Phone Number
                 </label>
                 <Input
@@ -206,11 +329,15 @@ export default function Contact() {
                   onChange={handleInputChange}
                   className="w-full"
                   placeholder="+977-9841234567"
+                  disabled={isSubmitting}
                 />
               </div>
 
               <div>
-                <label htmlFor="interest" className="block text-sm font-medium text-black mb-2">
+                <label
+                  htmlFor="interest"
+                  className="block text-sm font-medium text-black mb-2"
+                >
                   I'm Interested In *
                 </label>
                 <select
@@ -219,7 +346,8 @@ export default function Contact() {
                   value={formData.interest}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-golden focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-golden focus:border-transparent disabled:opacity-50"
+                  disabled={isSubmitting}
                 >
                   <option value="general">General Information</option>
                   <option value="trial">Free Trial Class</option>
@@ -232,7 +360,10 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-black mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-black mb-2"
+                >
                   Message *
                 </label>
                 <Textarea
@@ -244,24 +375,62 @@ export default function Contact() {
                   rows={5}
                   className="w-full"
                   placeholder="Tell us about your goals, experience level, or any questions you have..."
+                  disabled={isSubmitting}
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-golden hover:bg-golden/90 text-white py-3 text-lg">
-                <Send className="w-5 h-5 mr-2" />
-                Send Message
+              {/* reCAPTCHA Integration */}
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"} // Default to test key
+                  onChange={(token) => setRecaptchaToken(token)}
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-golden hover:bg-golden/90 text-white py-3 text-lg disabled:opacity-50"
+                disabled={isSubmitting || !recaptchaToken}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
 
             <div className="mt-6 p-4 bg-golden/5 rounded-lg">
               <p className="text-sm text-gray-600 text-center">
-                <strong>Free Trial Available!</strong> First-time visitors get a complimentary trial class. No equipment
-                needed - we provide everything!
+                <strong>Free Trial Available!</strong> First-time visitors get a
+                complimentary trial class. No equipment needed - we provide
+                everything!
               </p>
+              <div className="mt-2 flex justify-center space-x-4">
+                <a 
+                  href="tel:+9813261944" 
+                  className="text-golden hover:underline text-sm"
+                >
+                  Call Now to Book
+                </a>
+                <span className="text-gray-400">|</span>
+                <a 
+                  href="mailto:boxmanduboxinggym2080@gmail.com" 
+                  className="text-golden hover:underline text-sm"
+                >
+                  Email Us
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Play, Award, Users, Clock, ArrowRight, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import featured from "../images/featured.jpeg"
-import hero1 from "../images/hero1.jpg"
-import hero2 from "../images/hero2.jpg"
+import featured from "../images/gallary/gallary4.png"
+import hero1 from "../images/gallary/gallary5.jpg"
+import hero2 from "../images/gallary/gallary2.jpg"
 
 
 export default function Hero() {
