@@ -9,7 +9,7 @@ import image3 from "../images/gallary/gallary3.jpg"
 import image4 from "../images/gallary/gallary4.png"
 import image5 from "../images/gallary/gallary5.jpg"
 import image6 from "../images/gallary/training1.jpg"
-import image7 from "../images/gallary/training2.jpg"
+// import image7 from "../images/gallary/training2.jpg"
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -45,11 +45,11 @@ export default function Gallery() {
       alt: "Women's boxing class",
       category: "Classes",
     },
-    {
-      src: image7,
-      alt: "Sparring session",
-      category: "Training",
-    },
+    // {
+    //   src: image7,
+    //   alt: "Sparring session",
+    //   category: "Training",
+    // },
     
   ]
 
