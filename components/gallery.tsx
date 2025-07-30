@@ -8,8 +8,18 @@ import image2 from "../images/gallary/gallary2.jpg"
 import image3 from "../images/gallary/gallary3.jpg"
 import image4 from "../images/gallary/gallary4.png"
 import image5 from "../images/gallary/gallary5.jpg"
-import image6 from "../images/gallary/training1.jpg"
-// import image7 from "../images/gallary/training2.jpg"
+import image6 from "../images/gallary/gallary6.jpg"
+import image9 from "../images/gallary/gallary7.jpg"
+import image10 from "../images/gallary/gallary8.jpg"
+import image11 from "../images/gallary/gallary9.jpg"
+import image12 from "../images/gallary/gallary10.jpg"
+import image13 from "../images/gallary/gallary11.jpg"
+import image14 from "../images/gallary/gallary12.jpg"
+import image15 from "../images/gallary/gallary13.jpg"
+import image16 from "../images/gallary/gallary14.jpg"
+import image17 from "../images/gallary/gallary15.jpg"
+import image18 from "../images/gallary/gallary16.jpg"
+
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -28,7 +38,7 @@ export default function Gallery() {
     {
       src: image3,
       alt: "Group boxing class",
-      category: "Classes",
+      category: "Achievement",
     },
     {
       src:image4,
@@ -46,10 +56,60 @@ export default function Gallery() {
       category: "Classes",
     },
     // {
-    //   src: image7,
+    //   src: image8,
     //   alt: "Sparring session",
     //   category: "Training",
     // },
+    {
+      src: image9,
+      alt: "Sparring session",
+      category: "Achievements ",
+    },
+    {
+      src: image10,
+      alt: "Sparring session",
+      category: "Sparring session",
+    },
+    {
+      src: image11,
+      alt: "Sparring session",
+      category: "Sparring session",
+    },
+    {
+      src: image12,
+      alt: "Sparring session",
+      category: "Sparring session",
+    },
+    {
+      src: image13,
+      alt: "Sparring session",
+      category: "Sparring session",
+    },
+    {
+      src: image14,
+      alt: "Sparring session",
+      category: "Achievements",
+    },
+    {
+      src: image15,
+      alt: "Sparring session",
+      category: "Achievements",
+    },
+    {
+      src: image16,
+      alt: "Sparring session",
+      category: "Training",
+    },
+    {
+      src: image17,
+      alt: "Sparring session",
+      category: "Training",
+    },
+    {
+      src: image18,
+      alt: "Sparring session",
+      category: "Training",
+    },
     
   ]
 

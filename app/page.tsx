@@ -17,7 +17,7 @@ export default function Home() {
         <Hero />
         <QuickStats />
         <FeaturedServices />
-        <FeaturedTrainers />
+        {/* <FeaturedTrainers /> */}
         {/* <PricingPreview /> */}
         <TestimonialsPreview />
         {/* <LatestNews /> */}

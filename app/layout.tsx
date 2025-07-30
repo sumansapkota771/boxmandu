@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Boxmandu",
   // description: 'Created with v0',
   // generator: 'v0.dev',
+  icons: {
+    icon: "../images/Logo.jpg", // Or .png or .svg
+  },
 };
 
 export default function RootLayout({
